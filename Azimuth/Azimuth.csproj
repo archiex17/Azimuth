@@ -15,4 +15,8 @@
     <OutputPath>..\Builds\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Raylib-cs" Version="4.2.0.1" />
+  </ItemGroup>
+
 </Project>
