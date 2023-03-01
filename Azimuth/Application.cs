@@ -7,11 +7,18 @@ namespace Azimuth
 {
 	public sealed class Application
 	{
-		public static Application Instance { get; private set; }
+		public static Application? Instance { get; private set; }
 
-		public static void Run(int _width, int _height, string _title, Color _color, Game _game)
+		public static void Run<GAME>() where GAME : Game, new()
 		{
-			Instance = new Application(_width, _height, _title, _color, _game);
+			if(Instance != null)
+			{
+				Console.WriteLine("[Error] Attempted to run application more than once!");
+
+				return;
+			}
+
+			Instance = new Application(new GAME());
 			Instance.Run();
 		}
 		
@@ -19,9 +26,10 @@ namespace Azimuth
 
 		private readonly Game game;
 
-		private Application(int _width, int _height, string _name, Color _color, Game _game)
+		private Application(Game _game)
 		{
-			Window = new Window(_width, _height, _name, _color);
+			Config.Create();
+			Window = new Window();
 			game = _game;
 		}
 

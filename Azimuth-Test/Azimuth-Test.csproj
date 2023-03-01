@@ -25,4 +25,10 @@
       <ProjectReference Include="..\Azimuth\Azimuth.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Assets\config.cfg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
